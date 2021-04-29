@@ -78,7 +78,7 @@ parser.add_argument('--batch_size', default=256, type=int,
                     help='Batch Size')
 parser.add_argument('--num_epochs', default=15, type=int,
                     help='Maximum number of epochs')
-parser.add_argument('--model', default='RNN', type=str,
+parser.add_argument('--model', default='LSTM', type=str,
                     choices=['RNN', 'LSTM', 'GRU', 'QRNN', 'TCN', 'DRNN'],
                     help='Model to use. Check available models')
 parser.add_argument('--train_log', default=100, type=int,
