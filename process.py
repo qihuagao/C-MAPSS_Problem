@@ -1,4 +1,4 @@
-import re, os
+import re, os, sys
 import numpy as np
 import pandas as pd
 import pickle as pkl
@@ -79,7 +79,7 @@ df_test['RUL'] = df_test.apply(lambda r: get_RUL(r, RUL_test), axis=1)
 df_train['RUL'] = df_train.apply(lambda r: RUL_by_parts(r, 130), axis=1)
 df_test['RUL'] = df_test.apply(lambda r: RUL_by_parts(r, 130), axis=1)
 
-clusterer = hdbscan.HDBSCAN(min_cluster_size=3000, prediction_data=True).fit(df_train[['setting 1', 'setting 2', 'setting 3']])
+clusterer = hdbscan.HDBSCAN(min_cluster_size=500, prediction_data=True).fit(df_train[['setting 1', 'setting 2', 'setting 3']])
 
 train_labels, strengths = hdbscan.approximate_predict(clusterer, df_train[['setting 1', 'setting 2', 'setting 3']])
 test_labels, strengths = hdbscan.approximate_predict(clusterer, df_test[['setting 1', 'setting 2', 'setting 3']])
@@ -89,6 +89,11 @@ df_test['HDBScan'] = test_labels
 
 df_train.set_index(['dataset_id', 'unit_id'], inplace=True)
 df_test.set_index(['dataset_id', 'unit_id'], inplace=True)
+
+# pd.set_option('display.max_rows', None)
+# np.set_printoptions(threshold=sys.maxsize)
+print(df_train)
+print(df_test)
 
 pd.to_pickle(df_train, args.data_path + '/df_train_cluster_piecewise.pkl')
 pd.to_pickle(df_test, args.data_path + '/df_test_cluster_piecewise.pkl')

@@ -58,11 +58,13 @@ def get_model(params):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Script Variables')
-    parser.add_argument('--logger_path', default='/home/rneves/temp/temp_logger', type=str,
+    parser.add_argument('--logger_path', default='temp_logger', type=str,
                         help='Main Folder to save all files')
-    parser.add_argument('--data_test_path', default='/datadrive/Turbofan_Engine/df_train_sample_cluster_piecewise.pkl', type=str,
+    parser.add_argument('--data_test_path',
+                        default='/Users/qihuagao/ws/C-MAPSS_Problem/data/df_test_cluster_piecewise.pkl', type=str,
                         help='path for data train file')
-    parser.add_argument('--data_train_path', default='/datadrive/Turbofan_Engine/df_test_sample_cluster_piecewise.pkl', type=str,
+    parser.add_argument('--data_train_path',
+                        default='data/df_train_cluster_piecewise.pkl', type=str,
                         help='path for data test file')
     parser.add_argument('--file', default='runs', type=str,
                         help='Directory to store files')

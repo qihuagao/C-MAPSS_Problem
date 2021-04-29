@@ -5,7 +5,7 @@ tensorboardX
 setuptools
 scikit-learn
 scikit-optimize
-cupy
+#cupy
 pynvrtc
 tqdm
 statsmodels

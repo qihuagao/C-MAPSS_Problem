@@ -5,7 +5,7 @@ from torch.optim.lr_scheduler import *
 import torch.optim as optim
 
 from turbofan_pkg import Trainer
-from .QRNN import QRNN
+# from .QRNN import QRNN
 from .TCN import TemporalConvNet
 from .DRNN import DRNN
 
@@ -40,8 +40,8 @@ class RNNModel(nn.Module):
             self.encoder_cell = nn.GRU(self.input_size, self.hidden_size, self.num_layers, batch_first=True)
         if self.cell_type == 'RNN':
             self.encoder_cell = nn.RNN(self.input_size, self.hidden_size, self.num_layers, batch_first=True)
-        if self.cell_type == 'QRNN':
-            self.encoder_cell = QRNN(self.input_size, self.hidden_size, self.num_layers, self.kernel_size)
+        # if self.cell_type == 'QRNN':
+        #     self.encoder_cell = QRNN(self.input_size, self.hidden_size, self.num_layers, self.kernel_size)
         if self.cell_type == 'DRNN':
             self.encoder_cell = DRNN(self.input_size, self.hidden_size, self.num_layers)  # Batch_First always True
         if self.cell_type == 'TCN':
